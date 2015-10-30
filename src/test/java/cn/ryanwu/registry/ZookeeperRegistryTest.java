@@ -56,6 +56,9 @@ public class ZookeeperRegistryTest {
 		//consumer订阅
 		Consumer consumer = new Consumer("test_provider_register_consumer_watch", "node1");
 		Registry consumerRegistry =  new ZookeeperRegistry("127.0.0.1:2181");
+		System.out.println("-----------------> consumer注册");
+		consumerRegistry.register(consumer.getEntity());
+		System.out.println("consumers:" + zkClient.getChild("/zookeeper-registry-example/consumer/test_provider_register_consumer_watch"));
 		System.out.println("-----------------> consumer订阅");
 		consumerRegistry.subscribe(entity, consumer);
 		Thread.sleep(2000);
@@ -80,7 +83,7 @@ public class ZookeeperRegistryTest {
 		consumer.printProviders();
 		
 		//provider3 退出
-		System.out.println("-----------------> node2退出");
+		System.out.println("-----------------> node3退出");
 		provider3Registry.unregister(entity);
 		Thread.sleep(2000);
 		consumer.printProviders();

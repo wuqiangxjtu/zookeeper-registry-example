@@ -24,15 +24,15 @@ public class Consumer implements ChildListener {
 			throws Exception {
 		switch (event.getType()) {
 		case CHILD_ADDED:
-//			System.out.println("CHILD_ADD," + event.getData().getPath());
+			// System.out.println("CHILD_ADD," + event.getData().getPath());
 			providers.add(event.getData().getPath());
 			break;
 		case CHILD_UPDATED:
-//			System.out.println("CHILD_UPDATEED" + event.getData().getPath());
+			// System.out.println("CHILD_UPDATEED" + event.getData().getPath());
 			providers.add(event.getData().getPath());
 			break;
 		case CHILD_REMOVED:
-//			System.out.println("CHILD_REMOVED," + event.getData().getPath());
+			// System.out.println("CHILD_REMOVED," + event.getData().getPath());
 			providers.remove(event.getData().getPath());
 			break;
 		default:
@@ -42,16 +42,21 @@ public class Consumer implements ChildListener {
 	}
 
 	public void printProviders() {
-		System.out.println("------------->Print providres by consumer:start<----------");
-		for(String url: providers) {
+		System.out
+				.println("------------->Print providres by consumer:start<----------");
+		for (String url : providers) {
 			System.out.println(url);
 		}
-		System.out.println("------------->Print providres by consumer:end<----------");
+		System.out
+				.println("------------->Print providres by consumer:end<----------");
 	}
 
 	public Set<String> getProviders() {
 		return providers;
 	}
 
+	public Entity getEntity() {
+		return entity;
+	}
 
 }
